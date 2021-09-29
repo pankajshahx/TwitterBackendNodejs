@@ -14,7 +14,7 @@ const authRoute = require("./routes/authUser");
 
 const app = express();
 
-const maxTime = 1000 * 60 * 60 * 24;
+const maxTime = 1000 * 60 * 60 * 6;
 
 const dbUri = "mongodb+srv://pankajshah:admin123@cluster0.vft7u.mongodb.net/twitter?retryWrites=true&w=majority";
 

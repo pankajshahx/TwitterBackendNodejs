@@ -2,14 +2,14 @@ const router = require("express").Router();
 const User = require("../modules/TwitterUser");
 const bcrypt = require("bcrypt");
 
-//REGISTER
+//register
 router.post("/register", async (req, res) => {
     try {
-        // GENERATE PASSWORD
+        // generate password
         const generatSalt = await bcrypt.genSalt(10);
         const strongPassword = await bcrypt.hash(req.body.password, generatSalt);
 
-        // GENERATE NEW USER
+        // generate new user
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
         });
 
 
-        // save user and return respond 
+        // save user and return response 
         const user = await newUser.save();
         res.status(200).json(user);
     } catch (err) {
@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
 });
 
 
-//LOGIN
+//Sign in
 router.post("login", async (req, res) => {
     try {
         const user = await User.findOne({ eamil: req.body.email });
